@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState } from 'react';
+import ListingCard from './ListingCard';
+// import listings from "./App"
 
-function Search() {
+function Search({ onSearch }) {
+  // const [listings, setListings] = useState([]);
+  const [search, setSearch] = useState('');
+  // console.log('search', listings);
+
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("submitted");
+    // setSearch(searchListings);
+    onSearch(search);
   }
+  // function handleSearch(e) {
+  //   setSearch(e.target.value);
+
+  // }
 
   return (
     <form className="searchbar" onSubmit={handleSubmit}>
@@ -12,10 +23,11 @@ function Search() {
         type="text"
         id="search"
         placeholder="search free stuff"
-        value={""}
-        onChange={(e) => console.log(e.target.value)}
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
       />
       <button type="submit">🔍</button>
+      {/* <ul> {projectElement} </ul> */}
     </form>
   );
 }
